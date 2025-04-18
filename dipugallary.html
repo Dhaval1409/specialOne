@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dripti Gallery</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f0e4d7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #6a1b9a;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #555;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 15px;
+      width: 90%;
+      max-width: 100%;
+    }
+
+    .gallery-item {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay-text {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Modal for enlarged image */
+    .enlarged-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      z-index: 10;
+    }
+
+    .enlarged-modal img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 2rem;
+      color: white;
+      background: red;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    Mobile Styling
+    /* @media (max-width: 600px) {
+      .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      .gallery-item {
+        height: 180px;
+      }
+
+      .overlay-text {
+        font-size: 1rem;
+      }
+    } */
+
+  </style>
+</head>
+<body>
+  <h1>beautiful Days ..... </h1>
+  <p>Click on any images</p>
+
+  <div class="gallery-container">
+    <!-- Example gallery items, replace with your own images -->
+    <div class="gallery-item" onclick="openModal('cat.jpeg')">
+      <img src="cat.jpeg" alt="Birthday memory 1">
+      <div class="overlay">
+        <div class="overlay-text">Happy Moments!</div>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openModal('us.jpeg')">
+      <img src="cat.jpeg" alt="Birthday memory 2">
+      <div class="overlay">
+        <div class="overlay-text">Our Special Day!</div>
+      </div>
+    </div>
+    <div class="gallery-item" onclick="openModal('cat.jpeg')">
+      <img src="cat.jpeg" alt="Birthday memory 3">
+      <div class="overlay">
+        <div class="overlay-text">Laughs & Love!</div>
+      </div>
+    </div>
+    <!-- Add more items similarly -->
+  </div>
+
+  <!-- Modal for enlarged image -->
+  <div class="enlarged-modal" id="enlarged-modal">
+    <button class="close-btn" onclick="closeModal()">X</button>
+    <img id="enlarged-img" src="" alt="Enlarged Image">
+  </div>
+
+  <script>
+    function openModal(imageSrc) {
+      const modal = document.getElementById('enlarged-modal');
+      const enlargedImg = document.getElementById('enlarged-img');
+      enlargedImg.src = imageSrc;
+    //   modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('enlarged-modal');
+      modal.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

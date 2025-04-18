@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seasons of Love</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      scroll-behavior: smooth;
+      font-family: 'Courier New', monospace;
+    }
+    section {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* Winter */
+    #winter {
+      background: linear-gradient(to top, #1e3c72, #2a5298);
+      overflow: hidden;
+    }
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: snow 10s linear infinite;
+    }
+    @keyframes snow {
+      0% { transform: translateY(0) translateX(0); }
+      100% { transform: translateY(100vh) translateX(20px); }
+    }
+
+    /* Summer */
+    #summer {
+      background: linear-gradient(to top, #fcb045, #fd1d1d);
+    }
+    .sun {
+      width: 100px;
+      height: 100px;
+      background: yellow;
+      border-radius: 50%;
+      animation: pulse 2s infinite ease-in-out;
+      box-shadow: 0 0 50px yellow;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Monsoon */
+    #monsoon {
+      background: linear-gradient(to top, #0f2027, #203a43, #2c5364);
+      overflow: hidden;
+    }
+    .raindrop {
+      position: absolute;
+      width: 2px;
+      height: 15px;
+      background: #9ec9e2;
+      top: -20px;
+      animation: rain 0.6s linear infinite;
+    }
+    @keyframes rain {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(100vh); }
+    }
+
+    /* Spring */
+    #spring {
+      background: linear-gradient(to top, #ffb6c1, #ffe4e1);
+      overflow: hidden;
+      color: #5b2c6f;
+    }
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: fall 6s linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    /* Lovely messages */
+    .message {
+      font-size: 1.6rem;
+      font-weight: bold;
+      max-width: 90%;
+      /* background: rgba(0,0,0,0.4); */
+      padding: 1rem;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      z-index: 2;
+    }
+
+    .below-img {
+      margin-top: 3rem;
+    
+      max-width: 200px;
+      max-height: 180px;
+      z-index: 2;
+    }
+
+    .season-img {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      max-width: 150px;
+      max-height: 150px;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .message {
+        font-size: 1.02rem;
+        font-weight: 400;
+      }
+      .season-img {
+        max-width: 100px;
+        max-height: 100px;
+        top: 10px;
+        right: 10px;
+      }
+      .below-img {
+        max-width: 120px;
+        max-height: 120px;
+      }
+      p{
+        font-size: small;
+         font-family: 'Courier New', monospace;
+        font-weight: 100;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="winter">
+    <div class="message">❄️ In the coldest winters, your love keeps me warm. You are my cozy snowflake, my heart's blanket. <p>@Dripti</p> ❄️</div>
+  
+    <img src="sang1.png" alt="Winter Below Image" class="below-img" />
+    <script>
+      for (let i = 0; i < 30; i++) {
+        let snow = document.createElement('div');
+        snow.className = 'snowflake';
+        snow.style.left = Math.random() * 100 + 'vw';
+        snow.style.width = snow.style.height = Math.random() * 5 + 5 + 'px';
+        snow.style.animationDuration = Math.random() * 5 + 5 + 's';
+        document.getElementById('winter').appendChild(snow);
+      }
+    </script>
+  </section>
+
+  <section id="summer">
+  
+    <div class="sun"></div>
+    <div class="message">☀️ Your smile is brighter than the summer sun. With you, even the hottest days feel like paradise. <p>@Dripti</p>  ☀️</div>
+    <img src="sang3.png" alt="Summer Below Image" class="below-img" />
+  </section>
+
+  <section id="monsoon">
+    <div class="message">🌧️ In every monsoon drop, I hear your name. You are the rain that soothes my soul and washes my worries. <p>@mikey</p>  🌧️</div>
+    <img src="sang4..png" alt="Monsoon Below Image" class="below-img" />
+    <script>
+      for (let i = 0; i < 60; i++) {
+        let drop = document.createElement('div');
+        drop.className = 'raindrop';
+        drop.style.left = Math.random() * 100 + 'vw';
+        drop.style.animationDelay = Math.random() * 2 + 's';
+        document.getElementById('monsoon').appendChild(drop);
+      }
+    </script>
+  </section>
+
+  <section id="spring">
+    <div class="message">🌸 When spring blooms, my heart blossoms for you. Like cherry blossoms in the breeze, your love makes my world beautiful. <p>@mh girl</p>  🌸</div>
+    <img src="sang2.png" alt="Spring Below Image" class="below-img" />
+    <script>
+      for (let i = 0; i < 40; i++) {
+        let petal = document.createElement('div');
+        petal.className = 'petal';
+        petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.top = Math.random() * -100 + 'px';
+        petal.style.animationDuration = Math.random() * 5 + 4 + 's';
+        document.getElementById('spring').appendChild(petal);
+      }
+  
+    </script>
+  </section>
+</body>
+</html>
